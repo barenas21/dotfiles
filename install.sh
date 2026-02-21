@@ -20,14 +20,12 @@ else
 fi
 
 # ── Brew packages ─────────────────────────────────────────────────────────────
-for pkg in stow eza zoxide fzf; do
-  if brew list $pkg &>/dev/null; then
-    info "$pkg already installed"
-  else
-    info "Installing $pkg..."
-    brew install $pkg
-  fi
-done
+if [ -f "$DOTFILES/Brewfile" ]; then
+  info "Installing packages from Brewfile..."
+  brew bundle install --file="$DOTFILES/Brewfile"
+else
+  warn "No Brewfile found, skipping"
+fi
 
 # ── Oh My Zsh ─────────────────────────────────────────────────────────────────
 if [ -d "$HOME/.oh-my-zsh" ]; then
