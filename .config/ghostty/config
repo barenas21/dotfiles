@@ -1,0 +1,12 @@
+theme = TokyoNight
+font-family = FiraCode Nerd Font
+window-padding-x = 10
+window-padding-y = 10
+background-opacity = 0.9
+background-blur-radius = 20
+macos-titlebar-style = hidden
+confirm-close-surface = false
+copy-on-select = true
+shell-integration = detect
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
