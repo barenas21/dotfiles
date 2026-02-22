@@ -139,6 +139,15 @@ elif [ -f "$HOME/.config/ghostty/config" ]; then
   rm "$HOME/.config/ghostty/config"
 fi
 
+# ── macOS settings ────────────────────────────────────────────────────────────
+if defaults read NSGlobalDomain NSWindowShouldDragOnGesture &>/dev/null && \
+   [ "$(defaults read NSGlobalDomain NSWindowShouldDragOnGesture)" = "1" ]; then
+  info "Cmd+drag window setting already enabled"
+else
+  info "Enabling Cmd+drag to move windows..."
+  defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true
+fi
+
 # ── Stow ──────────────────────────────────────────────────────────────────────
 info "Running stow..."
 cd "$DOTFILES"
